@@ -15,10 +15,6 @@
       owner: root
       group: root
 
-
-  vars:
-    ansible_python_interpreter: /usr/bin/python3
-
   - name: set wallpaper
     become_user: ansiblemaster
     dconf:
