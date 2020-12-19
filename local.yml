@@ -2,8 +2,6 @@
 - hosts: localhost
   connection: local
   become: true
-  vars:
-    ansible_python_interpreter: /usr/bin/python3
 
   tasks:
   - name: install htop
@@ -16,6 +14,10 @@
       dest: /usr/share/backgrounds/ansible-wallpaper.png
       owner: root
       group: root
+
+
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
 
   - name: set wallpaper
     become_user: ansiblemaster
