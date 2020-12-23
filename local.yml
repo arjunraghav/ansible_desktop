@@ -26,3 +26,29 @@
     dconf:
       key: "/org/gnome/desktop/background/picture-options"
       value: "'zoom'"
+
+  - name: copy .bashrc file
+    copy: files/bashrc
+      src: /home/ansiblemaster/.bashrc
+      owner: ansiblemaster
+      group: ansiblemaster
+
+  - name: add absible user
+    user:
+      name: arjun
+      system: yes
+
+  - name: setup sudo for ansible user
+    copy:
+      src: files/sudoer_arjun
+      dest: /etc/sudoers.d/arjun
+      owner: root
+      group: root
+      mode: 0440
+
+  - name: add ansible-pull cron job
+    cron:
+      name: ansible auto-provision
+      user: arjun
+      minute: "*/10"
+      job: ansible-pull -o -U https://github.com/arjunraghav/ansible_desktop.git
