@@ -28,8 +28,9 @@
       value: "'zoom'"
 
   - name: copy .bashrc file
-    copy: files/bashrc
-      src: /home/ansiblemaster/.bashrc
+    copy:
+      src: files/bashrc
+      dst: /home/ansiblemaster/.bashrc
       owner: ansiblemaster
       group: ansiblemaster
 
